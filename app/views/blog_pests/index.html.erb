@@ -1,0 +1,8 @@
+<h1>Lol Fuck</h1>
+
+<% @blog_pests.each do |blog_pest| %>
+   <div>
+    <h2><%= link_to blog_pest.title, blog_pest%></h2>
+    <h3><%= blog_pest.body%></h3>
+    </div>
+<% end %>

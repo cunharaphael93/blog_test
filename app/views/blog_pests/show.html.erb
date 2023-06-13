@@ -1,4 +1,4 @@
 <h1><%= @blog_pest.title%></h1>
 <h2><%= @blog_pest.body%></h2>
 <%= link_to "Index", root_path%>
-<%#= link_to "Edit", edit_blog_pest_path(@blog_pest) if user_signed_in?%>
+<%= link_to "Edit", edit_blog_pest_path(@blog_pest) if user_signed_in?%>

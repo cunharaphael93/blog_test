@@ -3,7 +3,7 @@ class BlogPestsController < ApplicationController
     before_action :set_blog_pest, except: [:index, :new, :create]
 
     def index
-        @blog_pests = BlogPest.all
+        @blog_pests = user_signed_in? ? BlogPest.all : BlogPest.published
     end
 
     def show
@@ -40,11 +40,11 @@ class BlogPestsController < ApplicationController
 
     private
         def blog_pest_params
-            params.require(:blog_pest).permit(:title, :body)
+            params.require(:blog_pest).permit(:title, :body, :published_at)
         end
 
         def set_blog_pest
-            @blog_pest = BlogPest.find(params[:id])
+            @blog_pest = user_signed_in? ? BlogPest.find(params[:id]) : BlogPest.published.find(params[:id])
             rescue ActiveRecord::RecordNotFound
             redirect_to root_path
         end

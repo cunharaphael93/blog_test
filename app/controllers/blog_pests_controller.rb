@@ -3,7 +3,7 @@ class BlogPestsController < ApplicationController
     before_action :set_blog_pest, except: [:index, :new, :create]
 
     def index
-        @blog_pests = user_signed_in? ? BlogPest.all : BlogPest.published
+        @blog_pests = user_signed_in? ? BlogPest.all.sorted : BlogPest.published.sorted
     end
 
     def show
@@ -40,7 +40,7 @@ class BlogPestsController < ApplicationController
 
     private
         def blog_pest_params
-            params.require(:blog_pest).permit(:title, :body, :published_at)
+            params.require(:blog_pest).permit(:title, :content, :published_at)
         end
 
         def set_blog_pest

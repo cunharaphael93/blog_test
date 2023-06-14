@@ -1,2 +1,0 @@
-class BlogPast < ApplicationRecord
-end
